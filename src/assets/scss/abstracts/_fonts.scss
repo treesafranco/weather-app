@@ -1,0 +1,24 @@
+//Font Imports
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/helvetica-neue/HelveticaNeue.ttc') format('ttc'),
+         url('../fonts/helvetica-neue/HelveticaNeue.woff') format('woff') ;
+    font-style: normal;
+    font-weight: normal;
+  }
+  
+  @font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/helvetica-neue/HelveticaNeue-Light.ttc') format('ttc'),
+         url('../fonts/helvetica-neue/HelveticaNeue-Light.woff') format('woff');
+    font-style: normal;
+    font-weight: 300;
+  } 
+  
+  @font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../fonts/helvetica-neue/HelveticaNeue-Bold.ttc') format('ttc'),
+         url('../fonts/helvetica-neue/HelveticaNeue-Bold.woff') format('woff');
+    font-style: normal;
+    font-weight: bold;
+  }
