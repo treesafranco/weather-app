@@ -1,4 +1,4 @@
-#Weather App
+## Weather App
 
 Weather App is a simple application which fetches realtime weather data from [Dark Sky API](https://darksky.net/dev)
 It displays data in a set of Swipeable cards.
