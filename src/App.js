@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../src/assets/scss/style.scss";
+
 import WeatherInfo from './Container/WeatherInfo';
 
 class App extends Component {
