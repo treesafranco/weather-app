@@ -1,4 +1,4 @@
-.loader {
+.spinner-container {
   position: absolute;
   display: flex;
   height: 100%;
@@ -9,7 +9,7 @@
   opacity: .3;
 }
 
-#loading {
+.spinner {
   display: inline-block;
   width: 50px;
   height: 50px;
