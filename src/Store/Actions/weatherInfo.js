@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { COUNTRIES } from '../../Container/WeatherInfo';
 
 export const FETCH_WEATHER_INFO_SUCCESS = "FETCH_WEATHER_INFO_SUCCESS";
 export const FETCH_WEATHER_INFO_FAIL= "FETCH_WEATHER_INFO_FAIL";
