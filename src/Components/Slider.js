@@ -138,8 +138,8 @@ class Slider extends Component {
     }
 
     return (
-      <div id="slider" ref={this.setWrapperRef}>
-        <div id="slider-content"
+      <div className="slider" ref={this.setWrapperRef}>
+        <div className="slider-content"
           style={{
             width: this.state.sliderWidth * this.totalItems + "px",
             transform: "translateX(" + this.state.activeIndex * -this.state.sliderWidth + "px)"
@@ -155,7 +155,7 @@ class Slider extends Component {
               );
             })}
         </div>
-        <div id="slider-control">{dots}</div>
+        <div className="slider-control">{dots}</div>
       </div>
     );
   }

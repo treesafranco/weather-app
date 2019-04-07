@@ -2,8 +2,9 @@
   position: absolute;
   display: flex;
   height: 100%;
-  align-items: center;
   width: 100%;
+  top:0; // mobile-safari fix
+  align-items: center;
   justify-content: center;
   background-color: #ffffff;
   opacity: .3;
