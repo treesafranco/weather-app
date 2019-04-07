@@ -1,8 +1,9 @@
-import * as actionTypes from '../Actions/actionTypes';
+import * as actionTypes from '../Actions/weatherInfo';
 
 const initialState = {
     weather: [],
-    loading: true
+    loading: true,
+    error: null // can be used for error handling
 }
 
 const reducer = (state = initialState, action) => {
@@ -27,7 +28,12 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 loading : true
             }
-        
+        case actionTypes.FETCH_WEATHER_INFO_FAIL:
+        case actionTypes.REFRESH_WEATHER_INFO_FAIL:
+            return {
+                ...state,
+                error: action.error
+            }
         default:
             return state;
     }

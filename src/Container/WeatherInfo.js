@@ -5,11 +5,31 @@ import Slider from "../Components/Slider";
 import WeatherCard from "../Components/WeatherCard";
 import Spinner from "../Components/Spinner";
 import { fetchWeatherInfo, refreshWeatherInfo }  from "../Store/Actions/weatherInfo";
-import * as constants from '../Store/Actions/constants';
+
+export const COUNTRIES = [
+  {
+    name: "singapore",
+    latitude: "1.3521",
+    longitude: "103.8198"
+  },
+  {
+    name: "india",
+    latitude: "20.5937",
+    longitude: "78.9629"
+  },
+  {
+    name: "canada",
+    latitude: "43.6532",
+    longitude: "-79.3832"
+  }
+];
+
 class WeatherInfo extends Component {
 
   componentDidMount() {
-    this.props.onInitApp(constants.COUNTRIES);
+    for (let i = 0; i < COUNTRIES.length; i++) {
+      this.props.onInitApp(COUNTRIES[i]);
+    }
   }
 
   render() {
