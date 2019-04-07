@@ -1,8 +1,8 @@
 import React from 'react';
 
-import LogoImage from '../../assets/images/logo.png';
-import RefreshImage from '../../assets/images/refresh.png';
-
+import LogoImage from '../assets/images/logo.png';
+import RefreshImage from '..//assets/images/refresh.png';
+import Spinner from '../Components/Spinner';
 
 const weatherCard = (props) => {
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -10,15 +10,24 @@ const weatherCard = (props) => {
     const date = new Date();
     const month = monthNames[date.getMonth()];
     const day = date.getDate();
-  
+
+    let color;
+    if (props.data.icon.indexOf("cloudy") > -1) {
+      color = "blue";
+    } else if (props.data.icon.indexOf("clear") > -1) {
+      color = "green";
+    } else {
+      color = "red";
+    }
+
     return (
-      <div className="card weather">
-        <div className="header">
-          <div id="card_nav" className="nav">
+      <div className="card weather-card">
+        <div className="card-header">
+          <div className="nav">
             <img className="logo" src={LogoImage} alt="logo" />
             <div
               className="refresh"
-              onClick={e => props.onRefresh(e, props.data.name, props.id)}>
+              onClick={() => props.onRefresh(props.id)}>
               <img src={RefreshImage} alt="refresh" />
             </div>
           </div>
@@ -26,7 +35,7 @@ const weatherCard = (props) => {
             <i className={`wi wi-forecast-io-${props.data.icon}`} />
           </div>
         </div>
-        <div className={`content ${props.color}`}>
+        <div className={`card-content ${color}`}>
           <div className="temp">
             <span>{Math.floor(props.data.temp)}</span>
           </div>
@@ -39,7 +48,7 @@ const weatherCard = (props) => {
             <span>{day}</span>
           </div>
         </div>
-        <div className="footer">
+        <div className="card-footer">
           <ul>
             <li className="item">
               <i className="wi wi-strong-wind" />
@@ -55,8 +64,10 @@ const weatherCard = (props) => {
             </li>
           </ul>
         </div>
+        {props.isLoading && <Spinner/>}
       </div>
     );
   };
   
   export default weatherCard;
+ 
