@@ -6,7 +6,7 @@ export const REFRESH_WEATHER_INFO_SUCCESS = "REFRESH_WEATHER_INFO_SUCCESS";
 export const REFRESH_WEATHER_INFO_FAIL = "REFRESH_WEATHER_INFO_FAIL";
 export const REFRESH_WEATHER_START = "REFRESH_WEATHER_START";
 
-const formatData = (result, country) => {
+const formatData = (result) => {
   const data = {
     name: result.timezone,
     longitude: result.longitude,
@@ -97,7 +97,7 @@ export const refreshWeatherInfo = (country, countryId) => {
         + country.longitude +
         "?units=si&exclude=hourly,minutely,daily,alerts,flags")
       .then(response => {
-        const data = formatData(response.data, country);
+        const data = formatData(response.data);
         setTimeout( ()=>{ dispatch(refreshWeatherInfoSuccess(countryId, data));}, 100); //display refresh screen for 100ms
       })
       .catch((error) => {
