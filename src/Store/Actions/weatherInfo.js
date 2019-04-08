@@ -8,9 +8,9 @@ export const REFRESH_WEATHER_START = "REFRESH_WEATHER_START";
 
 const formatData = (result, country) => {
   const data = {
-    name: country.name,
-    longitude: country.longitude,
-    latitude: country.latitude,
+    name: result.timezone,
+    longitude: result.longitude,
+    latitude: result.latitude,
     icon: result.currently.icon,
     description: result.currently.summary,
     wind: result.currently.windSpeed,
@@ -36,18 +36,34 @@ const fetchWeatherInfoFail = (error) => {
   };
 };
 
-export const fetchWeatherInfo = country => {
-  return dispatch => {
-      axios.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/28b62d0997403c765e31d5fc29398233/" +
-      country.latitude + "," + country.longitude + "?units=si&exclude=hourly,minutely,daily,alerts,flags")
-    .then(response => {
-      const data = formatData(response.data, country);
-      dispatch(fetchWeatherInfoSuccess(data));
-    })
-    .catch((error) => {
-        dispatch(fetchWeatherInfoFail(error.message));
-      });
+export const fetchWeatherInfo = countries => {
+  return async dispatch => {
+    let urlArray = [];
+
+    for (let i = 0; i < countries.length; i++) {
+      urlArray.push(
+        "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/28b62d0997403c765e31d5fc29398233/" +
+          countries[i].latitude + "," +
+          countries[i].longitude +
+          "?units=si&exclude=hourly,minutely,daily,alerts,flags"
+      );
     }
+
+    let promiseArray = await urlArray.map(url => axios.get(url));
+
+    const result = await axios.all(
+      promiseArray.map(promise =>
+        promise.catch(error => {
+          dispatch(fetchWeatherInfoFail(error.message));
+          return error;
+        })
+      )
+    );
+
+    const validResult= result.filter(res => !(res instanceof Error));
+    const data = validResult.map(result => formatData(result.data));
+    dispatch(fetchWeatherInfoSuccess(data));
+  };
 };
 
 // Refresh WeatherInfo
@@ -77,7 +93,8 @@ export const refreshWeatherInfo = (country, countryId) => {
   return dispatch => {
     dispatch(refreshStart());
     axios.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/28b62d0997403c765e31d5fc29398233/" +
-        country.latitude + "," + country.longitude +
+        country.latitude + "," 
+        + country.longitude +
         "?units=si&exclude=hourly,minutely,daily,alerts,flags")
       .then(response => {
         const data = formatData(response.data, country);

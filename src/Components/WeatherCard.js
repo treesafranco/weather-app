@@ -41,7 +41,7 @@ const weatherCard = (props) => {
           </div>
           <div className="info">
             <span>{props.data.description}</span>
-            <span>{props.data.name}</span>
+            <span>{props.data.name.split('/')[1]}</span>
           </div>
           <div className="date">
             <span>{month}</span>
