@@ -42,7 +42,7 @@ export const fetchWeatherInfo = countries => {
 
     for (let i = 0; i < countries.length; i++) {
       urlArray.push(
-        "https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/28b62d0997403c765e31d5fc29398233/" +
+        "https://api.darksky.net/forecast/28b62d0997403c765e31d5fc29398233/" +
           countries[i].latitude + "," +
           countries[i].longitude +
           "?units=si&exclude=hourly,minutely,daily,alerts,flags"
@@ -92,7 +92,7 @@ const refreshWeatherInfoFail = (error) => {
 export const refreshWeatherInfo = (country, countryId) => {
   return dispatch => {
     dispatch(refreshStart());
-    axios.get("https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/28b62d0997403c765e31d5fc29398233/" +
+    axios.get("https://api.darksky.net/forecast/28b62d0997403c765e31d5fc29398233/" +
         country.latitude + "," 
         + country.longitude +
         "?units=si&exclude=hourly,minutely,daily,alerts,flags")

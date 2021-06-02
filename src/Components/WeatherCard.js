@@ -24,7 +24,6 @@ const weatherCard = (props) => {
       <div className="card weather-card">
         <div className="card-header">
           <div className="nav">
-            <img className="logo" src={LogoImage} alt="logo" />
             <div
               className="refresh"
               onClick={() => props.onRefresh(props.id)}>
