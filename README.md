@@ -23,5 +23,8 @@ You will also see any lint errors in the console.
 
 ## Demo
 
-To see a live demo, please visit [Weather App](https://checkweather-app.firebaseapp.com/)
+To see a live demo, please visit [Weather App](https://treesaweatherapp0987.web.app/)
+
+If you have problem loading the demo, please visit the following site and allow the cors demo
+[Request temporary access to Demo server](https://cors-anywhere.herokuapp.com/corsdemo) and then refresh the demo app
 
